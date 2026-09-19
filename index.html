@@ -16,25 +16,30 @@
       overflow: hidden;
     }
 
+    /* ============================================================
+       BACKGROUND IMAGE — নতুন উজ্জ্বল গোল্ডেন ইমেজ
+       ============================================================ */
     body {
-      background-image: url('bg-gold.jpg');
+      background-image: url('bg-gold.jpg');   /* ← আপনার নতুন ইমেজের নাম */
       background-size: cover;
-      background-position: center top;
+      background-position: center center;
       background-attachment: fixed;
-      background-color: #000;
+      background-color: #1a1206;
       display: flex; align-items: center; justify-content: center;
       position: relative;
     }
 
+    /* হালকা ওভারলে — উজ্জ্বল ইমেজের জন্য খুব হালকা */
     body::before {
       content: '';
       position: fixed; inset: 0;
-      background: radial-gradient(
-        ellipse 80% 60% at 50% 42%,
-        rgba(0, 0, 0, 0) 0%,
-        rgba(0, 0, 0, 0.15) 55%,
-        rgba(0, 0, 0, 0.65) 100%
-      );
+      background:
+        linear-gradient(180deg,
+          rgba(0, 0, 0, 0.25) 0%,
+          rgba(0, 0, 0, 0.10) 30%,
+          rgba(0, 0, 0, 0.10) 60%,
+          rgba(0, 0, 0, 0.40) 100%
+        );
       z-index: 0; pointer-events: none;
     }
 
@@ -59,66 +64,64 @@
     }
     .screen::-webkit-scrollbar { display: none; }
 
-    /* ---------- GLASS CARD ---------- */
+    /* ---------- GLASS CARD — আরও স্বচ্ছ, সোনালি আভা ---------- */
     .glass {
-      background: rgba(0, 12, 22, 0.35);
-      border: 1.2px solid rgba(0, 255, 255, 0.45);
-      backdrop-filter: blur(2px);
-      -webkit-backdrop-filter: blur(2px);
+      background: rgba(20, 12, 0, 0.28);
+      border: 1.2px solid rgba(255, 215, 0, 0.55);
+      backdrop-filter: blur(3px);
+      -webkit-backdrop-filter: blur(3px);
       box-shadow:
-        0 0 14px rgba(0, 255, 255, 0.15),
-        inset 0 0 20px rgba(0, 255, 255, 0.03);
+        0 0 14px rgba(255, 215, 0, 0.25),
+        inset 0 0 20px rgba(255, 215, 0, 0.05);
       position: relative; overflow: hidden;
     }
     .glass::before {
       content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
-      background: linear-gradient(90deg, transparent, rgba(0,255,255,0.8), transparent);
+      background: linear-gradient(90deg, transparent, rgba(255,215,0,0.85), transparent);
     }
 
     /* ============================================================
-       TOP HEADER — নাম একেবারে মিডিল সেন্টারে
+       TOP HEADER — নাম মিডিল সেন্টারে
        ============================================================ */
     .top-header {
       display: grid;
-      grid-template-columns: 1fr auto 1fr;   /* বাম ও ডান সমান, মাঝ auto */
+      grid-template-columns: 1fr auto 1fr;
       gap: 8px;
       align-items: center;
       flex-shrink: 0;
       padding: 2px 2px;
     }
 
-    /* প্রোফাইল আইকন — বাম দিকে বাঁধা */
     .user-box {
-      background: rgba(0, 15, 25, 0.55);
-      border: 1.5px solid rgba(0, 255, 255, 0.7);
+      background: rgba(20, 12, 0, 0.45);
+      border: 1.5px solid rgba(255, 215, 0, 0.75);
       border-radius: 50%;
       width: 42px; height: 42px;
       display: flex; align-items: center; justify-content: center;
       box-shadow:
-        0 0 16px rgba(0, 255, 255, 0.5),
-        inset 0 0 12px rgba(0, 255, 255, 0.15);
+        0 0 16px rgba(255, 215, 0, 0.55),
+        inset 0 0 12px rgba(255, 215, 0, 0.15);
       backdrop-filter: blur(4px);
       flex-shrink: 0;
-      justify-self: start;   /* ← বামে বাঁধা */
+      justify-self: start;
     }
     .user-box .u-icon {
       font-size: 20px;
-      filter: drop-shadow(0 0 6px rgba(0, 200, 255, 0.9));
+      filter: drop-shadow(0 0 6px rgba(255, 215, 0, 0.95));
     }
 
-    /* BITDEEN নাম — মিডিল */
+    /* হেডারের মাঝখানে খালি (কিন্তু আপনি চাইলে নাম দেখাতে পারেন) */
     .brand-box {
       text-align: center;
       display: flex;
       align-items: center;
       justify-content: center;
-      justify-self: center;   /* ← মাঝে বাঁধা */
+      justify-self: center;
       min-width: 0;
     }
-
     .brand-name {
       font-family: 'Georgia', 'Times New Roman', serif;
-      font-size: 26px;
+      font-size: 22px;
       font-weight: 900;
       letter-spacing: 3px;
       line-height: 1;
@@ -137,25 +140,24 @@
         drop-shadow(0 0 10px rgba(255, 180, 0, 0.7))
         drop-shadow(0 1px 0 rgba(255, 255, 255, 0.4))
         drop-shadow(0 2px 0 rgba(184, 134, 11, 1))
-        drop-shadow(0 3px 1px rgba(0, 0, 0, 1))
-        drop-shadow(0 5px 6px rgba(0, 0, 0, 0.7));
+        drop-shadow(0 3px 1px rgba(0, 0, 0, 0.8));
       padding: 2px 0;
       white-space: nowrap;
     }
 
-    /* ওয়ালেট বাটন — ডান দিকে বাঁধা */
+    /* ওয়ালেট বাটন — ডান */
     .wallet-box {
-      background: rgba(0, 15, 25, 0.55);
-      border: 1.5px solid rgba(0, 255, 255, 0.7);
+      background: rgba(20, 12, 0, 0.45);
+      border: 1.5px solid rgba(255, 215, 0, 0.75);
       border-radius: 12px;
       padding: 6px 9px;
       display: flex; align-items: center; justify-content: center; gap: 5px;
       box-shadow:
-        0 0 16px rgba(0, 255, 255, 0.5),
-        inset 0 0 12px rgba(0, 255, 255, 0.15);
+        0 0 16px rgba(255, 215, 0, 0.55),
+        inset 0 0 12px rgba(255, 215, 0, 0.15);
       backdrop-filter: blur(4px);
       flex-shrink: 0;
-      justify-self: end;   /* ← ডানে বাঁধা */
+      justify-self: end;
     }
     .wallet-box .w-icon {
       font-size: 13px;
@@ -168,7 +170,7 @@
       letter-spacing: 0.6px;
       display: flex; align-items: center; gap: 4px;
       white-space: nowrap;
-      text-shadow: 0 0 8px rgba(0, 255, 136, 1);
+      text-shadow: 0 0 8px rgba(0, 255, 136, 1), 0 1px 2px rgba(0,0,0,1);
     }
     .wallet-box .w-dot {
       width: 5px; height: 5px; border-radius: 50%;
@@ -181,25 +183,13 @@
       50% { opacity: 0.5; transform: scale(0.8); }
     }
 
-    /* ============================================================
-       LEVEL BADGE
-       ============================================================ */
+    /* ---------- LEVEL BADGE ---------- */
     .level-card {
       border-radius: 12px;
       padding: 7px 12px;
       display: flex; align-items: center; justify-content: space-between;
       flex-shrink: 0;
       position: relative;
-    }
-    .level-card::after {
-      content: '';
-      position: absolute; inset: 0;
-      border-radius: 12px;
-      background: linear-gradient(135deg,
-        rgba(255, 215, 0, 0.08) 0%,
-        rgba(0, 255, 255, 0.03) 50%,
-        rgba(255, 215, 0, 0.08) 100%);
-      pointer-events: none;
     }
 
     .level-left { display: flex; align-items: center; gap: 10px; position: relative; z-index: 2; }
@@ -213,7 +203,6 @@
       box-shadow:
         0 0 16px rgba(255, 215, 0, 0.9),
         0 0 0 2px rgba(255, 215, 0, 0.55),
-        0 0 0 3px rgba(255, 215, 0, 0.2),
         inset 0 2px 0 rgba(255, 255, 255, 0.7),
         inset 0 -2px 4px rgba(139, 90, 0, 0.5);
       flex-shrink: 0;
@@ -232,7 +221,7 @@
     .lv-label {
       font-size: 8px; color: #00ffff; font-weight: 900;
       letter-spacing: 2px;
-      text-shadow: 0 0 8px rgba(0, 255, 255, 1);
+      text-shadow: 0 0 8px rgba(0, 255, 255, 1), 0 1px 2px rgba(0,0,0,1);
       display: flex; align-items: center; gap: 4px;
     }
     .lv-label::before,
@@ -298,13 +287,13 @@
     .mining-card .mc-label {
       font-size: 9px; color: #ffd700; font-weight: 900;
       letter-spacing: 1.6px;
-      text-shadow: 0 0 8px rgba(255, 215, 0, 1);
+      text-shadow: 0 0 8px rgba(255, 215, 0, 1), 0 1px 2px rgba(0,0,0,1);
       margin-bottom: 1px;
     }
     .mining-card .mc-value {
       font-size: 18px; font-weight: 900;
       color: #ffffff;
-      text-shadow: 0 0 16px rgba(255, 215, 0, 0.9), 0 0 32px rgba(255, 215, 0, 0.5), 0 2px 4px rgba(0, 0, 0, 1);
+      text-shadow: 0 0 16px rgba(255, 215, 0, 1), 0 0 32px rgba(255, 215, 0, 0.6), 0 2px 4px rgba(0, 0, 0, 1);
       letter-spacing: 0.6px;
       line-height: 1.05;
       word-break: break-all;
@@ -314,10 +303,10 @@
       font-size: 12px;
     }
 
-    /* ---------- LOGO SPACER ---------- */
+    /* ---------- LOGO SPACER — BDC লোগো দেখার জন্য বড় ফাঁকা জায়গা ---------- */
     .logo-spacer {
       flex: 1 1 auto;
-      min-height: 170px;
+      min-height: 220px;
       position: relative;
       pointer-events: none;
     }
@@ -337,7 +326,7 @@
       display: flex; align-items: center; gap: 3px;
       font-size: 8px; color: #ffd700; font-weight: 900;
       letter-spacing: 0.8px;
-      text-shadow: 0 0 8px rgba(255, 215, 0, 1);
+      text-shadow: 0 0 8px rgba(255, 215, 0, 1), 0 1px 2px rgba(0,0,0,1);
       margin-bottom: 1px;
     }
     .speed-card .sc-head .sc-icon {
@@ -355,7 +344,7 @@
     }
     .speed-card .sc-sub {
       font-size: 7.5px; color: #00ffff; font-weight: 700;
-      text-shadow: 0 0 8px rgba(0, 255, 255, 0.9);
+      text-shadow: 0 0 8px rgba(0, 255, 255, 0.9), 0 1px 2px rgba(0,0,0,1);
       margin-top: 1px;
     }
 
@@ -384,7 +373,7 @@
     .ref-mini .rm-label {
       font-size: 7px; color: #00ffff; font-weight: 900;
       letter-spacing: 0.8px;
-      text-shadow: 0 0 8px rgba(0, 255, 255, 1);
+      text-shadow: 0 0 8px rgba(0, 255, 255, 1), 0 1px 2px rgba(0,0,0,1);
       margin-top: 0px;
     }
 
@@ -407,17 +396,17 @@
     }
     .nl-left .nl-text {
       font-size: 9.5px; color: #ffffff; font-weight: 800;
-      text-shadow: 0 0 8px rgba(255, 255, 255, 0.7);
+      text-shadow: 0 0 8px rgba(255, 255, 255, 0.8), 0 1px 2px rgba(0,0,0,1);
     }
     .nl-right {
       font-size: 9.5px; color: #ffd700; font-weight: 900;
-      text-shadow: 0 0 10px rgba(255, 215, 0, 1);
+      text-shadow: 0 0 10px rgba(255, 215, 0, 1), 0 1px 2px rgba(0,0,0,1);
     }
     .nl-bar {
       width: 100%; height: 6px;
-      background: rgba(0, 255, 255, 0.12);
+      background: rgba(255, 215, 0, 0.15);
       border-radius: 40px; overflow: hidden;
-      border: 1px solid rgba(0, 255, 255, 0.3);
+      border: 1px solid rgba(255, 215, 0, 0.4);
       position: relative;
     }
     .nl-bar-fill {
@@ -427,7 +416,7 @@
       box-shadow: 0 0 10px rgba(255, 215, 0, 1);
       transition: width 0.5s ease;
       position: relative;
-      width: 0%;   /* ← ডিফল্ট ০%, JS দিয়ে সেট হবে */
+      width: 0%;
     }
     .nl-bar-fill::after {
       content: '';
@@ -441,7 +430,7 @@
     }
     .nl-reward {
       font-size: 8px; color: #00ffff; font-weight: 700;
-      text-shadow: 0 0 8px rgba(0, 255, 255, 0.9);
+      text-shadow: 0 0 8px rgba(0, 255, 255, 0.9), 0 1px 2px rgba(0,0,0,1);
       text-align: right;
       margin-top: 2px;
     }
@@ -455,7 +444,7 @@
     .social-card .sc-label {
       font-size: 9px; color: #ffd700; font-weight: 900;
       letter-spacing: 1.3px;
-      text-shadow: 0 0 8px rgba(255, 215, 0, 1);
+      text-shadow: 0 0 8px rgba(255, 215, 0, 1), 0 1px 2px rgba(0,0,0,1);
       margin-bottom: 4px;
       display: flex; align-items: center; gap: 4px;
     }
@@ -470,17 +459,17 @@
       flex: 1;
       padding: 7px 8px;
       border-radius: 40px;
-      border: 1.2px solid rgba(0, 255, 255, 0.4);
-      background: rgba(0, 0, 0, 0.4);
+      border: 1.2px solid rgba(255, 215, 0, 0.5);
+      background: rgba(0, 0, 0, 0.45);
       font-size: 10px; outline: none;
       color: #ffffff; font-weight: 700;
       min-width: 0;
       text-align: center;
     }
-    .social-input::placeholder { color: rgba(0, 255, 255, 0.55); }
+    .social-input::placeholder { color: rgba(255, 215, 0, 0.55); }
     .social-input:focus {
-      border-color: #00ffff;
-      box-shadow: 0 0 14px rgba(0, 255, 255, 0.6);
+      border-color: #ffd700;
+      box-shadow: 0 0 14px rgba(255, 215, 0, 0.7);
     }
     .social-btn {
       padding: 7px 10px;
@@ -490,7 +479,7 @@
       color: #000;
       font-weight: 900; font-size: 9px;
       cursor: pointer;
-      box-shadow: 0 0 14px rgba(255, 215, 0, 0.6);
+      box-shadow: 0 0 14px rgba(255, 215, 0, 0.7);
       text-transform: uppercase;
       letter-spacing: 0.4px;
       display: flex; align-items: center; gap: 3px;
@@ -502,16 +491,16 @@
     .social-btn-paste {
       padding: 7px 10px;
       border-radius: 40px;
-      border: 1.2px solid #00ffff;
-      background: rgba(0, 255, 255, 0.1);
-      color: #00ffff;
+      border: 1.2px solid #ffd700;
+      background: rgba(255, 215, 0, 0.15);
+      color: #ffd700;
       font-weight: 900; font-size: 9px;
       cursor: pointer;
-      box-shadow: 0 0 14px rgba(0, 255, 255, 0.35);
+      box-shadow: 0 0 14px rgba(255, 215, 0, 0.45);
       text-transform: uppercase;
       letter-spacing: 0.4px;
       display: flex; align-items: center; gap: 3px;
-      text-shadow: 0 0 8px rgba(0, 255, 255, 1);
+      text-shadow: 0 0 8px rgba(255, 215, 0, 1);
       white-space: nowrap;
       flex-shrink: 0;
     }
@@ -521,9 +510,9 @@
     .bottom-nav {
       display: flex; gap: 6px;
       padding: 8px 10px 12px;
-      background: rgba(0, 0, 0, 0.82);
+      background: rgba(0, 0, 0, 0.85);
       backdrop-filter: blur(8px);
-      border-top: 1.2px solid rgba(0, 255, 255, 0.3);
+      border-top: 1.2px solid rgba(255, 215, 0, 0.4);
       justify-content: space-around;
       flex-shrink: 0;
     }
@@ -531,19 +520,19 @@
       flex: 1;
       padding: 10px 4px;
       border-radius: 12px;
-      border: 1.2px solid rgba(0, 255, 255, 0.5);
+      border: 1.2px solid rgba(255, 215, 0, 0.5);
       font-weight: 900; font-size: 10px; text-transform: uppercase;
       cursor: pointer; transition: all 0.2s ease;
-      background: rgba(0, 15, 25, 0.7);
-      color: #00ffff;
-      text-shadow: 0 0 8px rgba(0, 255, 255, 1);
+      background: rgba(20, 12, 0, 0.7);
+      color: #ffd700;
+      text-shadow: 0 0 8px rgba(255, 215, 0, 1);
       letter-spacing: 0.6px;
       display: flex; flex-direction: column; align-items: center; gap: 3px;
-      box-shadow: 0 0 14px rgba(0, 255, 255, 0.2);
+      box-shadow: 0 0 14px rgba(255, 215, 0, 0.2);
     }
     .nav-btn .nav-icon {
       font-size: 18px;
-      filter: drop-shadow(0 0 6px rgba(0, 255, 255, 0.9));
+      filter: drop-shadow(0 0 6px rgba(255, 215, 0, 0.9));
     }
     .nav-btn.active {
       background: linear-gradient(180deg, #ffe680, #ffd700, #b8860b);
@@ -566,11 +555,11 @@
     .task-item {
       display: flex; align-items: center; justify-content: space-between;
       padding: 8px 10px;
-      background: rgba(0, 12, 22, 0.4);
+      background: rgba(20, 12, 0, 0.4);
       border-radius: 10px;
-      border: 1.2px solid rgba(0, 255, 255, 0.4);
+      border: 1.2px solid rgba(255, 215, 0, 0.5);
       margin-bottom: 6px;
-      backdrop-filter: blur(2px);
+      backdrop-filter: blur(3px);
     }
     .task-left { display: flex; align-items: center; gap: 8px; }
     .task-rank {
@@ -583,11 +572,11 @@
     .task-info { display: flex; flex-direction: column; }
     .task-name {
       font-weight: 800; font-size: 11px; color: #ffffff;
-      text-shadow: 0 0 8px rgba(255, 215, 0, 0.5);
+      text-shadow: 0 0 8px rgba(255, 215, 0, 0.6), 0 1px 2px rgba(0,0,0,1);
     }
     .task-sub {
-      font-size: 8px; color: #00ffff; font-weight: 700;
-      text-shadow: 0 0 6px rgba(0, 255, 255, 0.8);
+      font-size: 8px; color: #ffd700; font-weight: 700;
+      text-shadow: 0 0 6px rgba(255, 215, 0, 0.8), 0 1px 2px rgba(0,0,0,1);
     }
     .task-reward {
       font-weight: 900; font-size: 10px; color: #000;
@@ -612,12 +601,12 @@
     .booster-btn:active { transform: scale(0.95); }
 
     .ref-link-box {
-      background: rgba(0, 0, 0, 0.55);
+      background: rgba(0, 0, 0, 0.6);
       border-radius: 40px; padding: 8px; margin: 6px 0;
       font-size: 10px; font-weight: 700; color: #ffffff;
       word-break: break-all;
-      border: 1.2px solid rgba(0, 255, 255, 0.5);
-      text-shadow: 0 0 6px rgba(0, 255, 255, 0.5);
+      border: 1.2px solid rgba(255, 215, 0, 0.6);
+      text-shadow: 0 0 6px rgba(255, 215, 0, 0.6);
       text-align: center;
     }
 
@@ -637,12 +626,12 @@
     @keyframes toastOut { to { opacity: 0; transform: translateX(-50%) translateY(-20px); } }
 
     @media (max-height: 720px) {
-      .logo-spacer { min-height: 130px; }
-      .brand-name { font-size: 23px; }
+      .logo-spacer { min-height: 160px; }
+      .brand-name { font-size: 20px; }
     }
     @media (max-height: 640px) {
-      .logo-spacer { min-height: 90px; }
-      .brand-name { font-size: 20px; }
+      .logo-spacer { min-height: 120px; }
+      .brand-name { font-size: 18px; }
       .user-box { width: 38px; height: 38px; }
     }
   </style>
@@ -812,7 +801,6 @@ function updateLiveUI() {
     if (nlReward) nlReward.textContent = "Reward: " + nextLv.reward + " BDC";
     if (nlProgress) nlProgress.textContent = state.codesSubmitted + " / " + nextLv.requiredCodes;
   } else {
-    // শেষ লেভেলে - সব ১০০%
     if (nlBar) nlBar.style.width = "100%";
   }
 }
@@ -927,7 +915,8 @@ function getMiningHTML() {
     <div class="top-header">
       <div class="user-box"><span class="u-icon">👤</span></div>
       <div class="brand-box">
-        <div class="brand-name">BITDEEN</div>
+        <!-- ইমেজে BITDEEN লোগো আছে, তাই এখানে খালি। চাইলে নিচের লাইন আনকমেন্ট করুন -->
+        <!-- <div class="brand-name">BITDEEN</div> -->
       </div>
       <div class="wallet-box">
         <span class="w-icon">💼</span>
@@ -967,7 +956,7 @@ function getMiningHTML() {
       </div>
     </div>
 
-    <!-- LOGO SPACER -->
+    <!-- LOGO SPACER — BDC লোগো দেখার জন্য বড় ফাঁকা জায়গা -->
     <div class="logo-spacer"></div>
 
     <!-- REFERRAL MINI ROW -->
@@ -1031,9 +1020,7 @@ function getTasksHTML() {
   return `
     <div class="top-header">
       <div class="user-box"><span class="u-icon">👤</span></div>
-      <div class="brand-box">
-        <div class="brand-name">TASKS</div>
-      </div>
+      <div class="brand-box"><div class="brand-name">TASKS</div></div>
       <div class="wallet-box">
         <span class="w-icon">💼</span>
         <span class="w-status"><span class="w-dot"></span>CONNECTED</span>
@@ -1053,7 +1040,7 @@ function getTasksHTML() {
       </div>
     </div>
 
-    <div style="text-align:center;font-size:11px;font-weight:900;color:#00ffff;text-shadow:0 0 10px rgba(0,255,255,1);margin-top:4px;letter-spacing:1.6px;">OTHER TASKS</div>
+    <div style="text-align:center;font-size:11px;font-weight:900;color:#ffd700;text-shadow:0 0 10px rgba(255,215,0,1);margin-top:4px;letter-spacing:1.6px;">OTHER TASKS</div>
 
     ${tasks.map(task => `
       <div class="task-item glass">
@@ -1074,9 +1061,7 @@ function getReferralHTML() {
   return `
     <div class="top-header">
       <div class="user-box"><span class="u-icon">👤</span></div>
-      <div class="brand-box">
-        <div class="brand-name">REFERRAL</div>
-      </div>
+      <div class="brand-box"><div class="brand-name">REFERRAL</div></div>
       <div class="wallet-box">
         <span class="w-icon">💼</span>
         <span class="w-status"><span class="w-dot"></span>CONNECTED</span>
@@ -1084,25 +1069,25 @@ function getReferralHTML() {
     </div>
 
     <div class="m-card glass" style="text-align:center;">
-      <div style="font-size:10px;color:#00ffff;font-weight:900;text-shadow:0 0 10px rgba(0,255,255,1);letter-spacing:1px;">YOUR REFERRAL LINK</div>
+      <div style="font-size:10px;color:#ffd700;font-weight:900;text-shadow:0 0 10px rgba(255,215,0,1);letter-spacing:1px;">YOUR REFERRAL LINK</div>
       <div class="ref-link-box">t.me/BitdeenBot?start=ref_${CONFIG.demoTelegramId}</div>
       <button class="booster-btn" onclick="showToast('📋 Link copied!')">COPY LINK</button>
     </div>
 
     <div class="m-card glass">
       <div style="display:flex;justify-content:space-between;margin-bottom:8px;">
-        <span style="font-size:10px;font-weight:900;color:#00ffff;text-shadow:0 0 8px rgba(0,255,255,1);">TOTAL REFERRALS</span>
+        <span style="font-size:10px;font-weight:900;color:#ffd700;text-shadow:0 0 8px rgba(255,215,0,1);">TOTAL REFERRALS</span>
         <span style="font-weight:900;color:#ffffff;text-shadow:0 0 8px rgba(255,255,255,0.7);">${state.referralCount}</span>
       </div>
       <div style="display:flex;justify-content:space-between;margin-bottom:10px;">
-        <span style="font-size:10px;font-weight:900;color:#00ffff;text-shadow:0 0 8px rgba(0,255,255,1);">REFERRAL SPEED</span>
+        <span style="font-size:10px;font-weight:900;color:#ffd700;text-shadow:0 0 8px rgba(255,215,0,1);">REFERRAL SPEED</span>
         <span style="font-weight:900;color:#00ff88;text-shadow:0 0 10px rgba(0,255,136,1);">+${state.totalReferralSpeed} SPEED</span>
       </div>
       <button class="booster-btn" onclick="addReferral()" style="width:100%;">SIMULATE REFERRAL</button>
     </div>
 
     <div class="m-card glass" style="text-align:center;">
-      <div style="font-size:10px;color:#00ffff;font-weight:900;text-shadow:0 0 8px rgba(0,255,255,1);margin-bottom:4px;">EARN +10 SPEED PER REFERRAL</div>
+      <div style="font-size:10px;color:#ffd700;font-weight:900;text-shadow:0 0 8px rgba(255,215,0,1);margin-bottom:4px;">EARN +10 SPEED PER REFERRAL</div>
       <div style="font-size:9px;color:#c0c0c0;">Invite friends and earn together!</div>
     </div>
   `;
