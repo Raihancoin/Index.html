@@ -17,29 +17,29 @@
     }
 
     /* ============================================================
-       BACKGROUND IMAGE — নতুন উজ্জ্বল গোল্ডেন ইমেজ
+       BACKGROUND IMAGE — সব পেজে একই, স্ক্রলে নড়বে না
        ============================================================ */
     body {
-      background-image: url('bg-gold.jpg');   /* ← আপনার নতুন ইমেজের নাম */
+      background-image: url('bg-gold.jpg');
       background-size: cover;
       background-position: center center;
       background-attachment: fixed;
+      background-repeat: no-repeat;
       background-color: #1a1206;
       display: flex; align-items: center; justify-content: center;
       position: relative;
     }
 
-    /* হালকা ওভারলে — উজ্জ্বল ইমেজের জন্য খুব হালকা */
+    /* খুব হালকা ওভারলে — ব্যাকগ্রাউন্ড স্পষ্ট দেখা যাবে */
     body::before {
       content: '';
       position: fixed; inset: 0;
-      background:
-        linear-gradient(180deg,
-          rgba(0, 0, 0, 0.25) 0%,
-          rgba(0, 0, 0, 0.10) 30%,
-          rgba(0, 0, 0, 0.10) 60%,
-          rgba(0, 0, 0, 0.40) 100%
-        );
+      background: linear-gradient(180deg,
+        rgba(0, 0, 0, 0.20) 0%,
+        rgba(0, 0, 0, 0.05) 40%,
+        rgba(0, 0, 0, 0.05) 60%,
+        rgba(0, 0, 0, 0.35) 100%
+      );
       z-index: 0; pointer-events: none;
     }
 
@@ -64,24 +64,26 @@
     }
     .screen::-webkit-scrollbar { display: none; }
 
-    /* ---------- GLASS CARD — আরও স্বচ্ছ, সোনালি আভা ---------- */
+    /* ============================================================
+       GLASS CARD — অত্যন্ত স্বচ্ছ, ব্যাকগ্রাউন্ড স্পষ্ট দেখা যায়
+       ============================================================ */
     .glass {
-      background: rgba(20, 12, 0, 0.28);
-      border: 1.2px solid rgba(255, 215, 0, 0.55);
-      backdrop-filter: blur(3px);
-      -webkit-backdrop-filter: blur(3px);
+      background: rgba(15, 10, 0, 0.15);
+      border: 1.2px solid rgba(255, 215, 0, 0.45);
+      backdrop-filter: blur(1.5px);
+      -webkit-backdrop-filter: blur(1.5px);
       box-shadow:
-        0 0 14px rgba(255, 215, 0, 0.25),
-        inset 0 0 20px rgba(255, 215, 0, 0.05);
+        0 0 12px rgba(255, 215, 0, 0.20),
+        inset 0 0 18px rgba(255, 215, 0, 0.03);
       position: relative; overflow: hidden;
     }
     .glass::before {
       content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
-      background: linear-gradient(90deg, transparent, rgba(255,215,0,0.85), transparent);
+      background: linear-gradient(90deg, transparent, rgba(255,215,0,0.8), transparent);
     }
 
     /* ============================================================
-       TOP HEADER — নাম মিডিল সেন্টারে
+       TOP HEADER — নাম মাঝখানে (name.png ইমেজ)
        ============================================================ */
     .top-header {
       display: grid;
@@ -93,15 +95,15 @@
     }
 
     .user-box {
-      background: rgba(20, 12, 0, 0.45);
-      border: 1.5px solid rgba(255, 215, 0, 0.75);
+      background: rgba(20, 12, 0, 0.35);
+      border: 1.5px solid rgba(255, 215, 0, 0.7);
       border-radius: 50%;
       width: 42px; height: 42px;
       display: flex; align-items: center; justify-content: center;
       box-shadow:
-        0 0 16px rgba(255, 215, 0, 0.55),
-        inset 0 0 12px rgba(255, 215, 0, 0.15);
-      backdrop-filter: blur(4px);
+        0 0 16px rgba(255, 215, 0, 0.5),
+        inset 0 0 12px rgba(255, 215, 0, 0.12);
+      backdrop-filter: blur(3px);
       flex-shrink: 0;
       justify-self: start;
     }
@@ -110,55 +112,54 @@
       filter: drop-shadow(0 0 6px rgba(255, 215, 0, 0.95));
     }
 
-    /* হেডারের মাঝখানে খালি (কিন্তু আপনি চাইলে নাম দেখাতে পারেন) */
+    /* নামের জায়গা — name.png এখানে বসবে */
     .brand-box {
-      text-align: center;
       display: flex;
       align-items: center;
       justify-content: center;
       justify-self: center;
       min-width: 0;
+      padding: 2px 0;
     }
-    .brand-name {
-      font-family: 'Georgia', 'Times New Roman', serif;
+    .name-img {
+      height: 38px;
+      max-width: 180px;
+      width: auto;
+      object-fit: contain;
+      filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.9))
+              drop-shadow(0 2px 3px rgba(0, 0, 0, 0.9));
+    }
+    /* fallback — যদি name.png না থাকে */
+    .name-fallback {
+      font-family: 'Georgia', serif;
       font-size: 22px;
       font-weight: 900;
       letter-spacing: 3px;
-      line-height: 1;
-      background: linear-gradient(180deg,
-        #fffbe0 0%,
-        #ffe680 20%,
-        #ffd700 45%,
-        #ffaa00 65%,
-        #b8860b 85%,
-        #6b4f00 100%);
+      background: linear-gradient(180deg, #fffbe0, #ffd700 45%, #b8860b 85%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
-      filter:
-        drop-shadow(0 0 4px rgba(255, 215, 0, 0.9))
-        drop-shadow(0 0 10px rgba(255, 180, 0, 0.7))
-        drop-shadow(0 1px 0 rgba(255, 255, 255, 0.4))
-        drop-shadow(0 2px 0 rgba(184, 134, 11, 1))
-        drop-shadow(0 3px 1px rgba(0, 0, 0, 0.8));
-      padding: 2px 0;
+      filter: drop-shadow(0 0 6px rgba(255,215,0,0.9));
       white-space: nowrap;
     }
 
     /* ওয়ালেট বাটন — ডান */
     .wallet-box {
-      background: rgba(20, 12, 0, 0.45);
-      border: 1.5px solid rgba(255, 215, 0, 0.75);
+      background: rgba(20, 12, 0, 0.35);
+      border: 1.5px solid rgba(255, 215, 0, 0.7);
       border-radius: 12px;
       padding: 6px 9px;
       display: flex; align-items: center; justify-content: center; gap: 5px;
       box-shadow:
-        0 0 16px rgba(255, 215, 0, 0.55),
-        inset 0 0 12px rgba(255, 215, 0, 0.15);
-      backdrop-filter: blur(4px);
+        0 0 16px rgba(255, 215, 0, 0.5),
+        inset 0 0 12px rgba(255, 215, 0, 0.12);
+      backdrop-filter: blur(3px);
       flex-shrink: 0;
       justify-self: end;
+      cursor: pointer;
+      transition: transform 0.15s;
     }
+    .wallet-box:active { transform: scale(0.95); }
     .wallet-box .w-icon {
       font-size: 13px;
       filter: drop-shadow(0 0 5px rgba(255, 215, 0, 0.9));
@@ -191,7 +192,6 @@
       flex-shrink: 0;
       position: relative;
     }
-
     .level-left { display: flex; align-items: center; gap: 10px; position: relative; z-index: 2; }
 
     .level-circle {
@@ -213,15 +213,14 @@
       position: absolute; inset: 3px;
       border-radius: 50%;
       border: 1px dashed rgba(255, 255, 255, 0.4);
-      pointer-events: none;
     }
 
     .level-text { display: flex; flex-direction: column; gap: 2px; }
 
     .lv-label {
-      font-size: 8px; color: #00ffff; font-weight: 900;
+      font-size: 8px; color: #ffd700; font-weight: 900;
       letter-spacing: 2px;
-      text-shadow: 0 0 8px rgba(0, 255, 255, 1), 0 1px 2px rgba(0,0,0,1);
+      text-shadow: 0 0 8px rgba(255, 215, 0, 1), 0 1px 2px rgba(0,0,0,1);
       display: flex; align-items: center; gap: 4px;
     }
     .lv-label::before,
@@ -246,7 +245,7 @@
         drop-shadow(0 1px 1px rgba(0, 0, 0, 1));
       line-height: 1.1;
       text-transform: uppercase;
-      font-family: 'Georgia', 'Times New Roman', serif;
+      font-family: 'Georgia', serif;
       padding-bottom: 2px;
       position: relative;
     }
@@ -257,9 +256,7 @@
       height: 1px;
       background: linear-gradient(90deg,
         transparent 0%,
-        rgba(255, 215, 0, 0.7) 30%,
-        rgba(255, 215, 0, 0.9) 50%,
-        rgba(255, 215, 0, 0.7) 70%,
+        rgba(255, 215, 0, 0.7) 50%,
         transparent 100%);
       box-shadow: 0 0 6px rgba(255, 215, 0, 0.8);
     }
@@ -273,8 +270,8 @@
       position: relative; z-index: 2;
     }
     @keyframes trophyGlow {
-      0%, 100% { transform: scale(1); filter: drop-shadow(0 0 8px rgba(255,215,0,1)); }
-      50% { transform: scale(1.08); filter: drop-shadow(0 0 16px rgba(255,215,0,1)) drop-shadow(0 0 24px rgba(255,180,0,0.8)); }
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.08); }
     }
 
     /* ---------- MINING BALANCE ---------- */
@@ -303,12 +300,32 @@
       font-size: 12px;
     }
 
-    /* ---------- LOGO SPACER — BDC লোগো দেখার জন্য বড় ফাঁকা জায়গা ---------- */
+    /* ============================================================
+       LOGO SPACER — logo.png এখানে বসবে
+       ============================================================ */
     .logo-spacer {
       flex: 1 1 auto;
-      min-height: 220px;
+      min-height: 200px;
       position: relative;
       pointer-events: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .logo-img {
+      max-width: 180px;
+      max-height: 180px;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+      filter:
+        drop-shadow(0 0 12px rgba(255, 215, 0, 0.85))
+        drop-shadow(0 0 24px rgba(255, 180, 0, 0.5));
+      animation: logoFloat 4s ease-in-out infinite;
+    }
+    @keyframes logoFloat {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-6px); }
     }
 
     /* ---------- SPEED ROW ---------- */
@@ -331,7 +348,6 @@
     }
     .speed-card .sc-head .sc-icon {
       font-size: 10px;
-      filter: drop-shadow(0 0 6px rgba(255, 215, 0, 1));
     }
     .speed-card .sc-value {
       font-size: 14px; font-weight: 900; color: #ffffff;
@@ -343,8 +359,8 @@
       font-size: 10px;
     }
     .speed-card .sc-sub {
-      font-size: 7.5px; color: #00ffff; font-weight: 700;
-      text-shadow: 0 0 8px rgba(0, 255, 255, 0.9), 0 1px 2px rgba(0,0,0,1);
+      font-size: 7.5px; color: #ffd700; font-weight: 700;
+      text-shadow: 0 0 8px rgba(255, 215, 0, 0.9), 0 1px 2px rgba(0,0,0,1);
       margin-top: 1px;
     }
 
@@ -363,7 +379,6 @@
     .ref-mini .rm-icon {
       font-size: 11px;
       filter: drop-shadow(0 0 6px rgba(255, 215, 0, 0.9));
-      margin-bottom: 0px;
     }
     .ref-mini .rm-value {
       font-size: 13px; font-weight: 900; color: #ffffff;
@@ -371,10 +386,9 @@
       line-height: 1.05;
     }
     .ref-mini .rm-label {
-      font-size: 7px; color: #00ffff; font-weight: 900;
+      font-size: 7px; color: #ffd700; font-weight: 900;
       letter-spacing: 0.8px;
-      text-shadow: 0 0 8px rgba(0, 255, 255, 1), 0 1px 2px rgba(0,0,0,1);
-      margin-top: 0px;
+      text-shadow: 0 0 8px rgba(255, 215, 0, 1), 0 1px 2px rgba(0,0,0,1);
     }
 
     /* ---------- NEXT LEVEL PROGRESS ---------- */
@@ -392,7 +406,6 @@
     }
     .nl-left .nl-icon {
       font-size: 12px;
-      filter: drop-shadow(0 0 6px rgba(255, 215, 0, 0.9));
     }
     .nl-left .nl-text {
       font-size: 9.5px; color: #ffffff; font-weight: 800;
@@ -429,8 +442,8 @@
       100% { left: 200%; }
     }
     .nl-reward {
-      font-size: 8px; color: #00ffff; font-weight: 700;
-      text-shadow: 0 0 8px rgba(0, 255, 255, 0.9), 0 1px 2px rgba(0,0,0,1);
+      font-size: 8px; color: #ffd700; font-weight: 700;
+      text-shadow: 0 0 8px rgba(255, 215, 0, 0.9), 0 1px 2px rgba(0,0,0,1);
       text-align: right;
       margin-top: 2px;
     }
@@ -448,10 +461,6 @@
       margin-bottom: 4px;
       display: flex; align-items: center; gap: 4px;
     }
-    .social-card .sc-label .sc-icon {
-      font-size: 10px;
-      filter: drop-shadow(0 0 6px rgba(255, 215, 0, 1));
-    }
     .social-row {
       display: flex; gap: 5px; align-items: center;
     }
@@ -460,13 +469,13 @@
       padding: 7px 8px;
       border-radius: 40px;
       border: 1.2px solid rgba(255, 215, 0, 0.5);
-      background: rgba(0, 0, 0, 0.45);
+      background: rgba(0, 0, 0, 0.4);
       font-size: 10px; outline: none;
       color: #ffffff; font-weight: 700;
       min-width: 0;
       text-align: center;
     }
-    .social-input::placeholder { color: rgba(255, 215, 0, 0.55); }
+    .social-input::placeholder { color: rgba(255, 215, 0, 0.6); }
     .social-input:focus {
       border-color: #ffd700;
       box-shadow: 0 0 14px rgba(255, 215, 0, 0.7);
@@ -485,6 +494,7 @@
       display: flex; align-items: center; gap: 3px;
       white-space: nowrap;
       flex-shrink: 0;
+      transition: transform 0.1s;
     }
     .social-btn:active { transform: scale(0.95); }
 
@@ -503,16 +513,20 @@
       text-shadow: 0 0 8px rgba(255, 215, 0, 1);
       white-space: nowrap;
       flex-shrink: 0;
+      transition: transform 0.1s;
     }
     .social-btn-paste:active { transform: scale(0.95); }
 
-    /* ---------- BOTTOM NAV ---------- */
+    /* ============================================================
+       BOTTOM NAV — স্বচ্ছ, ব্যাকগ্রাউন্ড দেখা যায়
+       ============================================================ */
     .bottom-nav {
       display: flex; gap: 6px;
       padding: 8px 10px 12px;
-      background: rgba(0, 0, 0, 0.85);
-      backdrop-filter: blur(8px);
-      border-top: 1.2px solid rgba(255, 215, 0, 0.4);
+      background: rgba(0, 0, 0, 0.35);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      border-top: 1.2px solid rgba(255, 215, 0, 0.45);
       justify-content: space-around;
       flex-shrink: 0;
     }
@@ -520,15 +534,16 @@
       flex: 1;
       padding: 10px 4px;
       border-radius: 12px;
-      border: 1.2px solid rgba(255, 215, 0, 0.5);
+      border: 1.2px solid rgba(255, 215, 0, 0.55);
       font-weight: 900; font-size: 10px; text-transform: uppercase;
       cursor: pointer; transition: all 0.2s ease;
-      background: rgba(20, 12, 0, 0.7);
+      background: rgba(20, 12, 0, 0.35);
       color: #ffd700;
-      text-shadow: 0 0 8px rgba(255, 215, 0, 1);
+      text-shadow: 0 0 8px rgba(255, 215, 0, 1), 0 1px 2px rgba(0,0,0,1);
       letter-spacing: 0.6px;
       display: flex; flex-direction: column; align-items: center; gap: 3px;
       box-shadow: 0 0 14px rgba(255, 215, 0, 0.2);
+      backdrop-filter: blur(3px);
     }
     .nav-btn .nav-icon {
       font-size: 18px;
@@ -536,13 +551,13 @@
     }
     .nav-btn.active {
       background: linear-gradient(180deg, #ffe680, #ffd700, #b8860b);
-      border-color: #ffd700;
+      border-color: #fff5cc;
       color: #000;
       text-shadow: 0 1px 1px rgba(255,255,255,0.6);
       box-shadow: 0 0 22px rgba(255, 215, 0, 0.8);
     }
     .nav-btn.active .nav-icon {
-      filter: drop-shadow(0 0 6px rgba(0, 0, 0, 0.8));
+      filter: drop-shadow(0 0 6px rgba(0, 0, 0, 0.6));
     }
     .nav-btn:active { transform: scale(0.95); }
 
@@ -555,11 +570,11 @@
     .task-item {
       display: flex; align-items: center; justify-content: space-between;
       padding: 8px 10px;
-      background: rgba(20, 12, 0, 0.4);
+      background: rgba(20, 12, 0, 0.25);
       border-radius: 10px;
-      border: 1.2px solid rgba(255, 215, 0, 0.5);
+      border: 1.2px solid rgba(255, 215, 0, 0.45);
       margin-bottom: 6px;
-      backdrop-filter: blur(3px);
+      backdrop-filter: blur(2px);
     }
     .task-left { display: flex; align-items: center; gap: 8px; }
     .task-rank {
@@ -585,6 +600,7 @@
       border: 1px solid #fff5cc;
       box-shadow: 0 0 12px rgba(255, 215, 0, 0.6);
       cursor: pointer;
+      transition: transform 0.1s;
     }
     .task-reward:active { transform: scale(0.95); }
     .task-reward:disabled { opacity: 0.5; }
@@ -597,15 +613,16 @@
       text-transform: uppercase; letter-spacing: 0.8px;
       box-shadow: 0 0 16px rgba(255, 215, 0, 0.6);
       cursor: pointer;
+      transition: transform 0.1s;
     }
     .booster-btn:active { transform: scale(0.95); }
 
     .ref-link-box {
-      background: rgba(0, 0, 0, 0.6);
+      background: rgba(0, 0, 0, 0.5);
       border-radius: 40px; padding: 8px; margin: 6px 0;
       font-size: 10px; font-weight: 700; color: #ffffff;
       word-break: break-all;
-      border: 1.2px solid rgba(255, 215, 0, 0.6);
+      border: 1.2px solid rgba(255, 215, 0, 0.55);
       text-shadow: 0 0 6px rgba(255, 215, 0, 0.6);
       text-align: center;
     }
@@ -625,14 +642,17 @@
     @keyframes toastIn { from { opacity: 0; transform: translateX(-50%) translateY(20px); } to { opacity: 1; transform: translateX(-50%) translateY(0); } }
     @keyframes toastOut { to { opacity: 0; transform: translateX(-50%) translateY(-20px); } }
 
-    @media (max-height: 720px) {
+    @media (max-height: 800px) {
       .logo-spacer { min-height: 160px; }
-      .brand-name { font-size: 20px; }
+      .name-img { height: 34px; }
     }
-    @media (max-height: 640px) {
-      .logo-spacer { min-height: 120px; }
-      .brand-name { font-size: 18px; }
-      .user-box { width: 38px; height: 38px; }
+    @media (max-height: 700px) {
+      .logo-spacer { min-height: 130px; }
+      .name-img { height: 30px; }
+    }
+    @media (max-height: 600px) {
+      .logo-spacer { min-height: 100px; }
+      .name-img { height: 26px; }
     }
   </style>
 </head>
@@ -739,6 +759,114 @@ function getNextLevel(currentLevel) {
 }
 
 // ============================================================
+// 🎵 UNIQUE SOUND ENGINE — Web Audio API
+// ============================================================
+let audioCtx = null;
+function initAudio() {
+  if (audioCtx) return audioCtx;
+  try {
+    audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+  } catch (e) {
+    audioCtx = null;
+  }
+  return audioCtx;
+}
+
+function playTapSound() {
+  const ctx = initAudio();
+  if (!ctx) return;
+  if (ctx.state === 'suspended') ctx.resume();
+
+  const now = ctx.currentTime;
+
+  const osc1 = ctx.createOscillator();
+  const gain1 = ctx.createGain();
+  osc1.type = 'sine';
+  osc1.frequency.setValueAtTime(1200, now);
+  osc1.frequency.exponentialRampToValueAtTime(600, now + 0.08);
+  gain1.gain.setValueAtTime(0.0001, now);
+  gain1.gain.exponentialRampToValueAtTime(0.15, now + 0.005);
+  gain1.gain.exponentialRampToValueAtTime(0.0001, now + 0.15);
+  osc1.connect(gain1).connect(ctx.destination);
+  osc1.start(now);
+  osc1.stop(now + 0.16);
+
+  const osc2 = ctx.createOscillator();
+  const gain2 = ctx.createGain();
+  osc2.type = 'triangle';
+  osc2.frequency.setValueAtTime(2400, now);
+  osc2.frequency.exponentialRampToValueAtTime(1800, now + 0.06);
+  gain2.gain.setValueAtTime(0.0001, now);
+  gain2.gain.exponentialRampToValueAtTime(0.08, now + 0.003);
+  gain2.gain.exponentialRampToValueAtTime(0.0001, now + 0.1);
+  osc2.connect(gain2).connect(ctx.destination);
+  osc2.start(now);
+  osc2.stop(now + 0.12);
+
+  const osc3 = ctx.createOscillator();
+  const gain3 = ctx.createGain();
+  osc3.type = 'sine';
+  osc3.frequency.setValueAtTime(180, now);
+  osc3.frequency.exponentialRampToValueAtTime(90, now + 0.05);
+  gain3.gain.setValueAtTime(0.0001, now);
+  gain3.gain.exponentialRampToValueAtTime(0.06, now + 0.004);
+  gain3.gain.exponentialRampToValueAtTime(0.0001, now + 0.08);
+  osc3.connect(gain3).connect(ctx.destination);
+  osc3.start(now);
+  osc3.stop(now + 0.09);
+}
+
+function playSuccessSound() {
+  const ctx = initAudio();
+  if (!ctx) return;
+  if (ctx.state === 'suspended') ctx.resume();
+
+  const now = ctx.currentTime;
+  const notes = [880, 1320, 1760];
+
+  notes.forEach((freq, i) => {
+    const osc = ctx.createOscillator();
+    const gain = ctx.createGain();
+    osc.type = 'sine';
+    osc.frequency.setValueAtTime(freq, now + i * 0.06);
+    gain.gain.setValueAtTime(0.0001, now + i * 0.06);
+    gain.gain.exponentialRampToValueAtTime(0.12, now + i * 0.06 + 0.01);
+    gain.gain.exponentialRampToValueAtTime(0.0001, now + i * 0.06 + 0.20);
+    osc.connect(gain).connect(ctx.destination);
+    osc.start(now + i * 0.06);
+    osc.stop(now + i * 0.06 + 0.22);
+  });
+}
+
+function playErrorSound() {
+  const ctx = initAudio();
+  if (!ctx) return;
+  if (ctx.state === 'suspended') ctx.resume();
+
+  const now = ctx.currentTime;
+  const osc = ctx.createOscillator();
+  const gain = ctx.createGain();
+  osc.type = 'square';
+  osc.frequency.setValueAtTime(220, now);
+  osc.frequency.exponentialRampToValueAtTime(140, now + 0.15);
+  gain.gain.setValueAtTime(0.0001, now);
+  gain.gain.exponentialRampToValueAtTime(0.10, now + 0.01);
+  gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.2);
+  osc.connect(gain).connect(ctx.destination);
+  osc.start(now);
+  osc.stop(now + 0.22);
+}
+
+function attachButtonSounds() {
+  document.addEventListener('click', (e) => {
+    const btn = e.target.closest('button, .wallet-box, .nav-btn, .task-reward, .social-btn, .social-btn-paste, .booster-btn');
+    if (btn && !btn.disabled) {
+      playTapSound();
+    }
+  }, true);
+}
+
+// ============================================================
 // STORAGE
 // ============================================================
 function saveState() {
@@ -810,6 +938,7 @@ function updateLiveUI() {
 // ============================================================
 function claimMining() {
   if (state.miningBalance <= 0) {
+    playErrorSound();
     showToast('⛏️ Nothing to claim yet!');
     return;
   }
@@ -818,6 +947,7 @@ function claimMining() {
   state.miningBalance = 0;
   saveState();
   render();
+  playSuccessSound();
   showToast(`⛏️ Claimed ${claimed.toFixed(6)} BDC!`);
 }
 
@@ -825,6 +955,7 @@ function doCheckin() {
   if (state.lastCheckin) {
     const hoursSince = (Date.now() - new Date(state.lastCheckin).getTime()) / (1000 * 60 * 60);
     if (hoursSince < CONFIG.checkinIntervalHours) {
+      playErrorSound();
       showToast('⏳ Already checked in.');
       return;
     }
@@ -834,6 +965,7 @@ function doCheckin() {
   state.totalSpeed = state.baseSpeed + state.totalReferralSpeed + state.checkinSpeed;
   saveState();
   render();
+  playSuccessSound();
   showToast(`✅ Check-in! +${CONFIG.dailyCheckinReward} SPEED`);
 }
 
@@ -843,6 +975,7 @@ function addReferral() {
   state.totalSpeed = state.baseSpeed + state.totalReferralSpeed + state.checkinSpeed;
   saveState();
   render();
+  playSuccessSound();
   showToast(`+1 Referral! +${CONFIG.referralRewardSpeed} SPEED`);
 }
 
@@ -855,6 +988,7 @@ async function pasteSocialCode() {
       input.value = text.trim().toUpperCase();
       showToast('📋 Code pasted!');
     } else {
+      playErrorSound();
       showToast('📋 Clipboard empty');
     }
   } catch (err) {
@@ -870,8 +1004,8 @@ function claimSocialCode() {
   const input = document.getElementById('socialCodeInput');
   if (!input) return;
   const code = input.value.trim().toUpperCase();
-  if (!code) { showToast('Please enter a code'); return; }
-  if (state.usedCodes.includes(code)) { showToast('❌ Code already used'); return; }
+  if (!code) { playErrorSound(); showToast('Please enter a code'); return; }
+  if (state.usedCodes.includes(code)) { playErrorSound(); showToast('❌ Code already used'); return; }
 
   state.usedCodes.push(code);
   state.codesSubmitted += 1;
@@ -882,13 +1016,16 @@ function claimSocialCode() {
   const newLv = getCurrentLevel(state.codesSubmitted);
   if (newLv.level > oldLv.level) {
     state.level = newLv.level;
-    showToast(`⭐ Level Up! ${newLv.name}`);
+    playSuccessSound();
+    setTimeout(() => showToast(`⭐ Level Up! ${newLv.name}`), 300);
+  } else {
+    playSuccessSound();
   }
 
   saveState();
   input.value = '';
   render();
-  showToast(`✅ Code #${state.codesSubmitted} claimed!`);
+  setTimeout(() => showToast(`✅ Code #${state.codesSubmitted} claimed!`), 100);
 }
 
 // ============================================================
@@ -915,8 +1052,8 @@ function getMiningHTML() {
     <div class="top-header">
       <div class="user-box"><span class="u-icon">👤</span></div>
       <div class="brand-box">
-        <!-- ইমেজে BITDEEN লোগো আছে, তাই এখানে খালি। চাইলে নিচের লাইন আনকমেন্ট করুন -->
-        <!-- <div class="brand-name">BITDEEN</div> -->
+        <img class="name-img" src="name.png" alt="BITDEEN"
+             onerror="this.outerHTML='<div class=\\'name-fallback\\'>BITDEEN</div>'">
       </div>
       <div class="wallet-box">
         <span class="w-icon">💼</span>
@@ -956,8 +1093,11 @@ function getMiningHTML() {
       </div>
     </div>
 
-    <!-- LOGO SPACER — BDC লোগো দেখার জন্য বড় ফাঁকা জায়গা -->
-    <div class="logo-spacer"></div>
+    <!-- LOGO SPACER — logo.png এখানে বসবে -->
+    <div class="logo-spacer">
+      <img class="logo-img" src="logo.png" alt="BDC Logo"
+           onerror="this.style.display='none'">
+    </div>
 
     <!-- REFERRAL MINI ROW -->
     <div class="ref-mini-row">
@@ -1020,7 +1160,10 @@ function getTasksHTML() {
   return `
     <div class="top-header">
       <div class="user-box"><span class="u-icon">👤</span></div>
-      <div class="brand-box"><div class="brand-name">TASKS</div></div>
+      <div class="brand-box">
+        <img class="name-img" src="name.png" alt="BITDEEN"
+             onerror="this.outerHTML='<div class=\\'name-fallback\\'>TASKS</div>'">
+      </div>
       <div class="wallet-box">
         <span class="w-icon">💼</span>
         <span class="w-status"><span class="w-dot"></span>CONNECTED</span>
@@ -1040,7 +1183,7 @@ function getTasksHTML() {
       </div>
     </div>
 
-    <div style="text-align:center;font-size:11px;font-weight:900;color:#ffd700;text-shadow:0 0 10px rgba(255,215,0,1);margin-top:4px;letter-spacing:1.6px;">OTHER TASKS</div>
+    <div style="text-align:center;font-size:11px;font-weight:900;color:#ffd700;text-shadow:0 0 10px rgba(255,215,0,1),0 1px 2px rgba(0,0,0,1);margin-top:4px;letter-spacing:1.6px;">OTHER TASKS</div>
 
     ${tasks.map(task => `
       <div class="task-item glass">
@@ -1061,7 +1204,10 @@ function getReferralHTML() {
   return `
     <div class="top-header">
       <div class="user-box"><span class="u-icon">👤</span></div>
-      <div class="brand-box"><div class="brand-name">REFERRAL</div></div>
+      <div class="brand-box">
+        <img class="name-img" src="name.png" alt="BITDEEN"
+             onerror="this.outerHTML='<div class=\\'name-fallback\\'>REFERRAL</div>'">
+      </div>
       <div class="wallet-box">
         <span class="w-icon">💼</span>
         <span class="w-status"><span class="w-dot"></span>CONNECTED</span>
@@ -1069,26 +1215,26 @@ function getReferralHTML() {
     </div>
 
     <div class="m-card glass" style="text-align:center;">
-      <div style="font-size:10px;color:#ffd700;font-weight:900;text-shadow:0 0 10px rgba(255,215,0,1);letter-spacing:1px;">YOUR REFERRAL LINK</div>
+      <div style="font-size:10px;color:#ffd700;font-weight:900;text-shadow:0 0 10px rgba(255,215,0,1),0 1px 2px rgba(0,0,0,1);letter-spacing:1px;">YOUR REFERRAL LINK</div>
       <div class="ref-link-box">t.me/BitdeenBot?start=ref_${CONFIG.demoTelegramId}</div>
       <button class="booster-btn" onclick="showToast('📋 Link copied!')">COPY LINK</button>
     </div>
 
     <div class="m-card glass">
       <div style="display:flex;justify-content:space-between;margin-bottom:8px;">
-        <span style="font-size:10px;font-weight:900;color:#ffd700;text-shadow:0 0 8px rgba(255,215,0,1);">TOTAL REFERRALS</span>
-        <span style="font-weight:900;color:#ffffff;text-shadow:0 0 8px rgba(255,255,255,0.7);">${state.referralCount}</span>
+        <span style="font-size:10px;font-weight:900;color:#ffd700;text-shadow:0 0 8px rgba(255,215,0,1),0 1px 2px rgba(0,0,0,1);">TOTAL REFERRALS</span>
+        <span style="font-weight:900;color:#ffffff;text-shadow:0 0 8px rgba(255,255,255,0.8),0 1px 2px rgba(0,0,0,1);">${state.referralCount}</span>
       </div>
       <div style="display:flex;justify-content:space-between;margin-bottom:10px;">
-        <span style="font-size:10px;font-weight:900;color:#ffd700;text-shadow:0 0 8px rgba(255,215,0,1);">REFERRAL SPEED</span>
-        <span style="font-weight:900;color:#00ff88;text-shadow:0 0 10px rgba(0,255,136,1);">+${state.totalReferralSpeed} SPEED</span>
+        <span style="font-size:10px;font-weight:900;color:#ffd700;text-shadow:0 0 8px rgba(255,215,0,1),0 1px 2px rgba(0,0,0,1);">REFERRAL SPEED</span>
+        <span style="font-weight:900;color:#00ff88;text-shadow:0 0 10px rgba(0,255,136,1),0 1px 2px rgba(0,0,0,1);">+${state.totalReferralSpeed} SPEED</span>
       </div>
       <button class="booster-btn" onclick="addReferral()" style="width:100%;">SIMULATE REFERRAL</button>
     </div>
 
     <div class="m-card glass" style="text-align:center;">
-      <div style="font-size:10px;color:#ffd700;font-weight:900;text-shadow:0 0 8px rgba(255,215,0,1);margin-bottom:4px;">EARN +10 SPEED PER REFERRAL</div>
-      <div style="font-size:9px;color:#c0c0c0;">Invite friends and earn together!</div>
+      <div style="font-size:10px;color:#ffd700;font-weight:900;text-shadow:0 0 8px rgba(255,215,0,1),0 1px 2px rgba(0,0,0,1);margin-bottom:4px;">EARN +10 SPEED PER REFERRAL</div>
+      <div style="font-size:9px;color:#e0e0e0;">Invite friends and earn together!</div>
     </div>
   `;
 }
@@ -1126,6 +1272,17 @@ function init() {
   state.totalSpeed = state.baseSpeed + state.totalReferralSpeed + state.checkinSpeed;
   startMining();
   render();
+  attachButtonSounds();
+
+  const unlockAudio = () => {
+    const ctx = initAudio();
+    if (ctx && ctx.state === 'suspended') ctx.resume();
+    document.removeEventListener('touchstart', unlockAudio);
+    document.removeEventListener('click', unlockAudio);
+  };
+  document.addEventListener('touchstart', unlockAudio, { once: true });
+  document.addEventListener('click', unlockAudio, { once: true });
+
   setInterval(saveState, 5000);
 }
 
