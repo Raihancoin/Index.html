@@ -30,15 +30,14 @@
       position: relative;
     }
 
-    /* খুব হালকা ওভারলে — ব্যাকগ্রাউন্ড স্পষ্ট দেখা যাবে */
     body::before {
       content: '';
       position: fixed; inset: 0;
       background: linear-gradient(180deg,
-        rgba(0, 0, 0, 0.20) 0%,
-        rgba(0, 0, 0, 0.05) 40%,
-        rgba(0, 0, 0, 0.05) 60%,
-        rgba(0, 0, 0, 0.35) 100%
+        rgba(0, 0, 0, 0.18) 0%,
+        rgba(0, 0, 0, 0.04) 40%,
+        rgba(0, 0, 0, 0.04) 60%,
+        rgba(0, 0, 0, 0.30) 100%
       );
       z-index: 0; pointer-events: none;
     }
@@ -65,25 +64,25 @@
     .screen::-webkit-scrollbar { display: none; }
 
     /* ============================================================
-       GLASS CARD — অত্যন্ত স্বচ্ছ, ব্যাকগ্রাউন্ড স্পষ্ট দেখা যায়
+       GLASS CARD — অত্যন্ত স্বচ্ছ
        ============================================================ */
     .glass {
-      background: rgba(15, 10, 0, 0.15);
-      border: 1.2px solid rgba(255, 215, 0, 0.45);
-      backdrop-filter: blur(1.5px);
-      -webkit-backdrop-filter: blur(1.5px);
+      background: rgba(15, 10, 0, 0.06);
+      border: 1.2px solid rgba(255, 215, 0, 0.55);
+      backdrop-filter: blur(0.5px);
+      -webkit-backdrop-filter: blur(0.5px);
       box-shadow:
-        0 0 12px rgba(255, 215, 0, 0.20),
-        inset 0 0 18px rgba(255, 215, 0, 0.03);
+        0 0 12px rgba(255, 215, 0, 0.25),
+        inset 0 0 15px rgba(255, 215, 0, 0.03);
       position: relative; overflow: hidden;
     }
     .glass::before {
       content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
-      background: linear-gradient(90deg, transparent, rgba(255,215,0,0.8), transparent);
+      background: linear-gradient(90deg, transparent, rgba(255,215,0,0.85), transparent);
     }
 
     /* ============================================================
-       TOP HEADER — নাম মাঝখানে (name.png ইমেজ)
+       TOP HEADER
        ============================================================ */
     .top-header {
       display: grid;
@@ -95,7 +94,7 @@
     }
 
     .user-box {
-      background: rgba(20, 12, 0, 0.35);
+      background: rgba(20, 12, 0, 0.25);
       border: 1.5px solid rgba(255, 215, 0, 0.7);
       border-radius: 50%;
       width: 42px; height: 42px;
@@ -103,7 +102,7 @@
       box-shadow:
         0 0 16px rgba(255, 215, 0, 0.5),
         inset 0 0 12px rgba(255, 215, 0, 0.12);
-      backdrop-filter: blur(3px);
+      backdrop-filter: blur(1.5px);
       flex-shrink: 0;
       justify-self: start;
     }
@@ -112,7 +111,7 @@
       filter: drop-shadow(0 0 6px rgba(255, 215, 0, 0.95));
     }
 
-    /* নামের জায়গা — name.png এখানে বসবে */
+    /* নাম মাঝখানে — বড় ও স্পষ্ট */
     .brand-box {
       display: flex;
       align-items: center;
@@ -122,30 +121,30 @@
       padding: 2px 0;
     }
     .name-img {
-      height: 38px;
-      max-width: 180px;
+      height: 56px;
+      max-width: 240px;
       width: auto;
       object-fit: contain;
-      filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.9))
-              drop-shadow(0 2px 3px rgba(0, 0, 0, 0.9));
+      filter:
+        drop-shadow(0 0 10px rgba(255, 215, 0, 0.95))
+        drop-shadow(0 0 20px rgba(255, 180, 0, 0.6))
+        drop-shadow(0 2px 4px rgba(0, 0, 0, 0.9));
     }
-    /* fallback — যদি name.png না থাকে */
     .name-fallback {
       font-family: 'Georgia', serif;
-      font-size: 22px;
+      font-size: 24px;
       font-weight: 900;
       letter-spacing: 3px;
       background: linear-gradient(180deg, #fffbe0, #ffd700 45%, #b8860b 85%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
-      filter: drop-shadow(0 0 6px rgba(255,215,0,0.9));
+      filter: drop-shadow(0 0 8px rgba(255,215,0,0.95));
       white-space: nowrap;
     }
 
-    /* ওয়ালেট বাটন — ডান */
     .wallet-box {
-      background: rgba(20, 12, 0, 0.35);
+      background: rgba(20, 12, 0, 0.25);
       border: 1.5px solid rgba(255, 215, 0, 0.7);
       border-radius: 12px;
       padding: 6px 9px;
@@ -153,7 +152,7 @@
       box-shadow:
         0 0 16px rgba(255, 215, 0, 0.5),
         inset 0 0 12px rgba(255, 215, 0, 0.12);
-      backdrop-filter: blur(3px);
+      backdrop-filter: blur(1.5px);
       flex-shrink: 0;
       justify-self: end;
       cursor: pointer;
@@ -301,11 +300,11 @@
     }
 
     /* ============================================================
-       LOGO SPACER — logo.png এখানে বসবে
+       LOGO SPACER — বড় লোগো
        ============================================================ */
     .logo-spacer {
       flex: 1 1 auto;
-      min-height: 200px;
+      min-height: 220px;
       position: relative;
       pointer-events: none;
       display: flex;
@@ -313,19 +312,19 @@
       justify-content: center;
     }
     .logo-img {
-      max-width: 180px;
-      max-height: 180px;
+      max-width: 240px;
+      max-height: 240px;
       width: auto;
       height: auto;
       object-fit: contain;
       filter:
-        drop-shadow(0 0 12px rgba(255, 215, 0, 0.85))
-        drop-shadow(0 0 24px rgba(255, 180, 0, 0.5));
+        drop-shadow(0 0 14px rgba(255, 215, 0, 0.9))
+        drop-shadow(0 0 28px rgba(255, 180, 0, 0.6));
       animation: logoFloat 4s ease-in-out infinite;
     }
     @keyframes logoFloat {
       0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-6px); }
+      50% { transform: translateY(-8px); }
     }
 
     /* ---------- SPEED ROW ---------- */
@@ -518,15 +517,15 @@
     .social-btn-paste:active { transform: scale(0.95); }
 
     /* ============================================================
-       BOTTOM NAV — স্বচ্ছ, ব্যাকগ্রাউন্ড দেখা যায়
+       BOTTOM NAV — অত্যন্ত স্বচ্ছ, ব্যাকগ্রাউন্ড স্পষ্ট দেখা যায়
        ============================================================ */
     .bottom-nav {
       display: flex; gap: 6px;
       padding: 8px 10px 12px;
-      background: rgba(0, 0, 0, 0.35);
-      backdrop-filter: blur(6px);
-      -webkit-backdrop-filter: blur(6px);
-      border-top: 1.2px solid rgba(255, 215, 0, 0.45);
+      background: rgba(0, 0, 0, 0.08);
+      backdrop-filter: blur(1.5px);
+      -webkit-backdrop-filter: blur(1.5px);
+      border-top: 1.2px solid rgba(255, 215, 0, 0.5);
       justify-content: space-around;
       flex-shrink: 0;
     }
@@ -534,27 +533,34 @@
       flex: 1;
       padding: 10px 4px;
       border-radius: 12px;
-      border: 1.2px solid rgba(255, 215, 0, 0.55);
+      border: 1.2px solid rgba(255, 215, 0, 0.65);
       font-weight: 900; font-size: 10px; text-transform: uppercase;
       cursor: pointer; transition: all 0.2s ease;
-      background: rgba(20, 12, 0, 0.35);
+      background: rgba(20, 12, 0, 0.08);
       color: #ffd700;
       text-shadow: 0 0 8px rgba(255, 215, 0, 1), 0 1px 2px rgba(0,0,0,1);
       letter-spacing: 0.6px;
       display: flex; flex-direction: column; align-items: center; gap: 3px;
       box-shadow: 0 0 14px rgba(255, 215, 0, 0.2);
-      backdrop-filter: blur(3px);
+      backdrop-filter: blur(0.5px);
+      -webkit-backdrop-filter: blur(0.5px);
     }
     .nav-btn .nav-icon {
       font-size: 18px;
       filter: drop-shadow(0 0 6px rgba(255, 215, 0, 0.9));
     }
+    /* Active বাটন — হালকা সোনালি, ব্যাকগ্রাউন্ড দেখা যায় */
     .nav-btn.active {
-      background: linear-gradient(180deg, #ffe680, #ffd700, #b8860b);
+      background: linear-gradient(180deg,
+        rgba(255, 230, 128, 0.55),
+        rgba(255, 215, 0, 0.55),
+        rgba(184, 134, 11, 0.55));
       border-color: #fff5cc;
       color: #000;
-      text-shadow: 0 1px 1px rgba(255,255,255,0.6);
+      text-shadow: 0 1px 1px rgba(255,255,255,0.7);
       box-shadow: 0 0 22px rgba(255, 215, 0, 0.8);
+      backdrop-filter: blur(0.5px);
+      -webkit-backdrop-filter: blur(0.5px);
     }
     .nav-btn.active .nav-icon {
       filter: drop-shadow(0 0 6px rgba(0, 0, 0, 0.6));
@@ -570,11 +576,11 @@
     .task-item {
       display: flex; align-items: center; justify-content: space-between;
       padding: 8px 10px;
-      background: rgba(20, 12, 0, 0.25);
+      background: rgba(20, 12, 0, 0.15);
       border-radius: 10px;
       border: 1.2px solid rgba(255, 215, 0, 0.45);
       margin-bottom: 6px;
-      backdrop-filter: blur(2px);
+      backdrop-filter: blur(1px);
     }
     .task-left { display: flex; align-items: center; gap: 8px; }
     .task-rank {
@@ -643,16 +649,19 @@
     @keyframes toastOut { to { opacity: 0; transform: translateX(-50%) translateY(-20px); } }
 
     @media (max-height: 800px) {
-      .logo-spacer { min-height: 160px; }
-      .name-img { height: 34px; }
+      .logo-spacer { min-height: 180px; }
+      .name-img { height: 48px; }
+      .logo-img { max-width: 200px; max-height: 200px; }
     }
     @media (max-height: 700px) {
-      .logo-spacer { min-height: 130px; }
-      .name-img { height: 30px; }
+      .logo-spacer { min-height: 140px; }
+      .name-img { height: 42px; }
+      .logo-img { max-width: 170px; max-height: 170px; }
     }
     @media (max-height: 600px) {
-      .logo-spacer { min-height: 100px; }
-      .name-img { height: 26px; }
+      .logo-spacer { min-height: 110px; }
+      .name-img { height: 36px; }
+      .logo-img { max-width: 140px; max-height: 140px; }
     }
   </style>
 </head>
@@ -759,7 +768,7 @@ function getNextLevel(currentLevel) {
 }
 
 // ============================================================
-// 🎵 UNIQUE SOUND ENGINE — Web Audio API
+// 🎵 SOUND ENGINE — Web Audio API
 // ============================================================
 let audioCtx = null;
 function initAudio() {
@@ -776,7 +785,6 @@ function playTapSound() {
   const ctx = initAudio();
   if (!ctx) return;
   if (ctx.state === 'suspended') ctx.resume();
-
   const now = ctx.currentTime;
 
   const osc1 = ctx.createOscillator();
@@ -788,8 +796,7 @@ function playTapSound() {
   gain1.gain.exponentialRampToValueAtTime(0.15, now + 0.005);
   gain1.gain.exponentialRampToValueAtTime(0.0001, now + 0.15);
   osc1.connect(gain1).connect(ctx.destination);
-  osc1.start(now);
-  osc1.stop(now + 0.16);
+  osc1.start(now); osc1.stop(now + 0.16);
 
   const osc2 = ctx.createOscillator();
   const gain2 = ctx.createGain();
@@ -800,30 +807,15 @@ function playTapSound() {
   gain2.gain.exponentialRampToValueAtTime(0.08, now + 0.003);
   gain2.gain.exponentialRampToValueAtTime(0.0001, now + 0.1);
   osc2.connect(gain2).connect(ctx.destination);
-  osc2.start(now);
-  osc2.stop(now + 0.12);
-
-  const osc3 = ctx.createOscillator();
-  const gain3 = ctx.createGain();
-  osc3.type = 'sine';
-  osc3.frequency.setValueAtTime(180, now);
-  osc3.frequency.exponentialRampToValueAtTime(90, now + 0.05);
-  gain3.gain.setValueAtTime(0.0001, now);
-  gain3.gain.exponentialRampToValueAtTime(0.06, now + 0.004);
-  gain3.gain.exponentialRampToValueAtTime(0.0001, now + 0.08);
-  osc3.connect(gain3).connect(ctx.destination);
-  osc3.start(now);
-  osc3.stop(now + 0.09);
+  osc2.start(now); osc2.stop(now + 0.12);
 }
 
 function playSuccessSound() {
   const ctx = initAudio();
   if (!ctx) return;
   if (ctx.state === 'suspended') ctx.resume();
-
   const now = ctx.currentTime;
   const notes = [880, 1320, 1760];
-
   notes.forEach((freq, i) => {
     const osc = ctx.createOscillator();
     const gain = ctx.createGain();
@@ -833,8 +825,7 @@ function playSuccessSound() {
     gain.gain.exponentialRampToValueAtTime(0.12, now + i * 0.06 + 0.01);
     gain.gain.exponentialRampToValueAtTime(0.0001, now + i * 0.06 + 0.20);
     osc.connect(gain).connect(ctx.destination);
-    osc.start(now + i * 0.06);
-    osc.stop(now + i * 0.06 + 0.22);
+    osc.start(now + i * 0.06); osc.stop(now + i * 0.06 + 0.22);
   });
 }
 
@@ -842,7 +833,6 @@ function playErrorSound() {
   const ctx = initAudio();
   if (!ctx) return;
   if (ctx.state === 'suspended') ctx.resume();
-
   const now = ctx.currentTime;
   const osc = ctx.createOscillator();
   const gain = ctx.createGain();
@@ -853,8 +843,7 @@ function playErrorSound() {
   gain.gain.exponentialRampToValueAtTime(0.10, now + 0.01);
   gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.2);
   osc.connect(gain).connect(ctx.destination);
-  osc.start(now);
-  osc.stop(now + 0.22);
+  osc.start(now); osc.stop(now + 0.22);
 }
 
 function attachButtonSounds() {
@@ -1048,7 +1037,6 @@ function getMiningHTML() {
   const progress = nextLv ? Math.min(100, (done / range) * 100) : 0;
 
   return `
-    <!-- TOP HEADER -->
     <div class="top-header">
       <div class="user-box"><span class="u-icon">👤</span></div>
       <div class="brand-box">
@@ -1061,7 +1049,6 @@ function getMiningHTML() {
       </div>
     </div>
 
-    <!-- LEVEL BADGE -->
     <div class="level-card glass">
       <div class="level-left">
         <div class="level-circle" id="lvNum">${curLv.level}</div>
@@ -1073,13 +1060,11 @@ function getMiningHTML() {
       <div class="level-trophy">🏆</div>
     </div>
 
-    <!-- MINING BALANCE -->
     <div class="mining-card glass">
       <div class="mc-label">MINING BALANCE</div>
       <div class="mc-value" id="miningBalanceDisplay">${state.miningBalance.toFixed(10)} <span>BDC</span></div>
     </div>
 
-    <!-- SPEED ROW -->
     <div class="speed-row">
       <div class="speed-card glass">
         <div class="sc-head"><span class="sc-icon">⚡</span>TOTAL SPEED</div>
@@ -1093,13 +1078,11 @@ function getMiningHTML() {
       </div>
     </div>
 
-    <!-- LOGO SPACER — logo.png এখানে বসবে -->
     <div class="logo-spacer">
       <img class="logo-img" src="logo.png" alt="BDC Logo"
            onerror="this.style.display='none'">
     </div>
 
-    <!-- REFERRAL MINI ROW -->
     <div class="ref-mini-row">
       <div class="ref-mini glass">
         <div class="rm-icon">👤</div>
@@ -1118,7 +1101,6 @@ function getMiningHTML() {
       </div>
     </div>
 
-    <!-- NEXT LEVEL PROGRESS -->
     ${nextLv ? `
     <div class="next-level-card glass">
       <div class="nl-top">
@@ -1136,7 +1118,6 @@ function getMiningHTML() {
     </div>
     ` : ''}
 
-    <!-- SOCIAL CODE -->
     <div class="social-card glass">
       <div class="sc-label"><span class="sc-icon">💻</span>PASTE SOCIAL CODE</div>
       <div class="social-row">
